@@ -4,7 +4,7 @@ module Ruboty
   module Handlers
     class Haaabot < Base
       on(
-        /はー…[[:blank:]]*(?<keyword>.+)/,
+        /はー[…\.]+[\s　]*(?<keyword>[[\S]&&[^　]]+)/,
         name: 'haaa',
         all: true,
         description: 'はー…のあとの文字を検索します'
