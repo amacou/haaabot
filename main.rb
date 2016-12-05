@@ -11,6 +11,8 @@ module Ruboty
       )
 
       def haaa(message)
+        return if filtering_by_user? && message.from != filtering_user
+
         if url = search(message[:keyword])
           text = "#{message[:keyword]}？ #{url}"
           bot.update_with_media(text, open(url))
@@ -21,6 +23,14 @@ module Ruboty
 
       def search(query)
         Ruboty::GoogleImage::Client.new(query: query).get
+      end
+
+      def filtering_by_user?
+        !filter_user.nil?
+      end
+
+      def filtering_user
+        ENV['FILTERING_USER']
       end
 
       def bot
