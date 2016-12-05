@@ -26,7 +26,7 @@ module Ruboty
       end
 
       def filtering_by_user?
-        !filter_user.nil?
+        !filtering_user.nil?
       end
 
       def filtering_user
