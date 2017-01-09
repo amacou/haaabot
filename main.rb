@@ -1,4 +1,5 @@
 require 'open-uri'
+require './error_tracker'
 
 module Ruboty
   module Handlers
