@@ -10,8 +10,10 @@
 /test/version_tmp/
 /tmp/
 
-# Used by dotenv library to load environment variables.
-# .env
+.env
+.byebug_history
+.ruby-version
+*.log
 
 ## Specific to RubyMotion:
 .dat*
