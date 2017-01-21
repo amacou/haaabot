@@ -1,6 +1,5 @@
 require 'open-uri'
 require './error_tracker'
-require 'twitter'
 
 module Ruboty
   module Handlers
