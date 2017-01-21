@@ -1,5 +1,6 @@
 require 'open-uri'
 require './error_tracker'
+require 'twitter'
 
 module Ruboty
   module Handlers
@@ -14,7 +15,7 @@ module Ruboty
       def haaa(message)
         return if filtering_by_user? && message.from != filtering_user
 
-        Retryable.retryable(tries: 5, on: [OpenURI::HTTPError, Twitter::Error::UnacceptableIO]) do
+        Retryable.retryable(tries: 5, on: [OpenURI::HTTPError, ::Twitter::Error::UnacceptableIO]) do
           url = search(message[:keyword])
           text = "#{message[:keyword]}! #{url}"
           bot.update_with_media(text, open(url))
