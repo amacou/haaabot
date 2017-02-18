@@ -17,7 +17,7 @@ module Ruboty
         Retryable.retryable(tries: 5, on: [OpenURI::HTTPError, ::Twitter::Error::UnacceptableIO]) do
           url = search(message[:keyword])
           text = "#{message[:keyword]}! #{url}"
-          bot.update_with_media(text, open(url, allow_redirections: :all))
+          bot.update_with_media(text, OpenURI.open_uri(url))
         end
       end
 
