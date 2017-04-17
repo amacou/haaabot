@@ -14,7 +14,7 @@ module Ruboty
       def haaa(message)
         return if filtering_by_user? && message.from != filtering_user
 
-        Retryable.retryable(tries: 5, on: [OpenURI::HTTPError, ::Twitter::Error::UnacceptableIO]) do
+        Retryable.retryable(tries: 5) do
           url = search(message[:keyword])
           text = "#{message[:keyword]}! #{url}"
           bot.update_with_media(text, OpenURI.open_uri(url))
